@@ -3,9 +3,9 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-set(THIS libcmdsvc)
-set(HEADERS command_service.h)
-set(SOURCES command_service.cpp)
+set(THIS libcmd_prcsg)
+set(HEADERS cmd_processing.h)
+set(SOURCES cmd_processing.cpp)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
     project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})

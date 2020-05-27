@@ -1,10 +1,10 @@
 #include <iostream>
-#include "command_service.h"
+#include "cmd_processing.h"
 
 int main()
 {
-    CommandService cmdsvc;
-    cmdsvc.run();
+    CmdProcessing cmdProcessing;
+    cmdProcessing.run();
 
     return 0;
 }

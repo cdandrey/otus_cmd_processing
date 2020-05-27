@@ -36,12 +36,12 @@ script:
   - cmake --build .
   - cmake --build . --target package
   - doxygen Doxyfile
-  - ./test/tb_geditor
+  - ./test/tb_cmd_processing
 deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T prj_cmdsvc-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ucdandrey:$BINTRAY_API_KEY "https://api.bintray.com/content/cda/otus-cpp/prj_cmdsvc/$TRAVIS_BUILD_NUMBER/prj_cmdsvc-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T prj_cmd_processing-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ucdandrey:$BINTRAY_API_KEY "https://api.bintray.com/content/cda/otus-cpp/prj_cmd_processing/$TRAVIS_BUILD_NUMBER/prj_cmd_processing-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
 
   provider: pages
   skip_cleanup: true

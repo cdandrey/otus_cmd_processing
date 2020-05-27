@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-set (THIS prj_geditor)
+set (THIS prj_cmd_processing)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
     project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})

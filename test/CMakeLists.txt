@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.2)
 
 set(THIS tb_cmdsvc)
 set(SOURCES tb_cmdsvc)
-set(LIBS libcmdsvc)
+set(LIBS libcmd_prcsg)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
     project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
