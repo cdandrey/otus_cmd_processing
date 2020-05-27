@@ -3,6 +3,8 @@
 
 int main()
 {
-    std::cout << "Commands Service" << std::endl;
+    CommandService cmdsvc;
+    cmdsvc.run();
+
     return 0;
 }
