@@ -1,10 +1,11 @@
 
-# test geditor
+# test cmd_prcsg
 
 cmake_minimum_required(VERSION 3.2)
 
-set(THIS tb_cmdsvc)
-set(SOURCES tb_cmdsvc)
+set(THIS tb_cmd_processing)
+set(SOURCES tb_cmd_processing)
+
 set(LIBS libcmd_prcsg)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
