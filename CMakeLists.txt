@@ -1,5 +1,5 @@
 
-# root geditor
+# root cmd_processing
 
 cmake_minimum_required(VERSION 3.2)
 

@@ -1,5 +1,5 @@
 
-# src cmdsvc
+# src cmd_prcsg
 
 cmake_minimum_required(VERSION 3.2)
 

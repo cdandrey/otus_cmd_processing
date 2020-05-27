@@ -1,4 +1,3 @@
-
 # test cmd_prcsg
 
 cmake_minimum_required(VERSION 3.2)
@@ -18,10 +17,6 @@ find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 
 add_executable(${THIS} ${SOURCES})
-
-#include_directories(
-#    ${GTEST_INCLUDE_DIRS}
-#)
 
 set_target_properties(
     ${THIS}
