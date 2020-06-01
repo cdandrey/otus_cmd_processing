@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+
+/home/travis/build/cdandrey/otus_cmd_processing/test/tb_cmd_processing.cpp
+../lib/cmd_processing.h
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+gtest/gtest.h
+-
+iostream
+-
+sstream
+-
+array
+-
+

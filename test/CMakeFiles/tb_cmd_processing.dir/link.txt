@@ -1,0 +1,1 @@
+/usr/bin/g++-9    -rdynamic CMakeFiles/tb_cmd_processing.dir/tb_cmd_processing.cpp.o  -o tb_cmd_processing -Wl,-Bstatic -lgtest -lgtest_main -Wl,-Bdynamic -lpthread ../lib/liblibcmd_prcsg.a 

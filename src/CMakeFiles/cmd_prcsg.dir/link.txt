@@ -1,0 +1,1 @@
+/usr/bin/g++-9    -rdynamic CMakeFiles/cmd_prcsg.dir/main.cpp.o  -o cmd_prcsg ../lib/liblibcmd_prcsg.a 
