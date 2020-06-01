@@ -35,7 +35,7 @@ script:
   - cmake .
   - cmake --build .
   - cmake --build . --target package
-  - doxygen Doxyfile
+  #- doxygen Doxyfile
   - ./test/tb_cmd_processing
 deploy:
   provider: script
