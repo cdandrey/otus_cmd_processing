@@ -1,10 +1,10 @@
 #include <iostream>
 #include "cmd_processing.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    CmdProcessing cmdProcessing;
-    cmdProcessing.run();
+    CmdProcessing cmdProcessing{static_cast<int>(argv[0])};
+    cmdProcessing.exec();
 
     return 0;
 }
