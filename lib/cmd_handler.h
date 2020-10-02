@@ -10,7 +10,7 @@ class ICmdHandler
     public:
         using ICmdHandlerPtr = CmdProcessing::ICmdHandlerPtr;
 
-        virtual ~ICmdHandler() = 0 {};
+        virtual ~ICmdHandler() {};
         virtual bool done(CmdProcessing* cmdProcessing) = 0;
         virtual void read(CmdProcessing* cmdProcessing) = 0;
 };
