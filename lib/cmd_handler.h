@@ -4,9 +4,9 @@ class CmdProcessing;
 
 class ICmdHandler
 {
-    using CmdProcessingPtr = std::weak_ptr<CmdProcessing>;
-
     public:
+        using CmdProcessingPtr = std::shared_ptr<CmdProcessing>;
+
         virtual ~ICmdHandler() = 0;
         virtual bool done(CmdProcessingPtr cmdProcessing) = 0;
         virtual void read(CmdProcessingPtr cmdProcessing) = 0;
@@ -14,31 +14,34 @@ class ICmdHandler
 
 class BulkBeginHandler : public ICmdHandler
 {
+    public:
+        virtual bool done(CmdProcessingPtr cmdProcessing);
+        virtual void read(CmdProcessingPtr cmdProcessing);
+
     private:
         int m_sizeBulk;
 };
 
 class BulkStaticHandler : public ICmdHandler
 {
-    private:
-        int m_bulkSize;
-
     public:
-        explicit BulkSizeHandler(int bulkSize);
+        explicit BulkStaticHandler(int bulkSize);
         bool done(CmdProcessingPtr cmdProcessing) override;
         void read(CmdProcessingPtr cmdProcessing) override;
+
+    private:
+        int m_bulkSize;
 };
 
 class BulkDynamicHandler : public ICmdHandler
 {
-
-    private:
-        m_countOpenBulk;
-
     public:
         explicit BulkDynamicHandler(int countOpenBulk);
         bool done(CmdProcessingPtr cmdProcessing) override;
         void read(CmdProcessingPtr cmdProcessing) override;
+
+    private:
+        int m_countOpenBulk;
 };
 
 class BulkEndHandler : public ICmdHandler
@@ -46,4 +49,4 @@ class BulkEndHandler : public ICmdHandler
     public:
         bool done(CmdProcessingPtr cmdProcessing) override;
         void read(CmdProcessingPtr cmdProcessing) override;
-}
+};

@@ -8,7 +8,8 @@ set (THIS prj_cmd_processing)
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
     project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-    project(${THIS} VERSION 0.0.1)
+    project(${THIS} 
+            VERSION 0.0.1)
 endif()
 
 add_subdirectory(src)
