@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.cpp" "/home/travis/build/cdandrey/otus_cmd_processing/lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o"
   "/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.cpp" "/home/travis/build/cdandrey/otus_cmd_processing/lib/CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

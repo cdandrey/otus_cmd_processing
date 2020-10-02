@@ -3,4 +3,5 @@
 
 src/CMakeFiles/cmd_prcsg.dir/main.cpp.o
  /home/travis/build/cdandrey/otus_cmd_processing/src/main.cpp
+ src/../lib/cmd_handler.h
  src/../lib/cmd_processing.h

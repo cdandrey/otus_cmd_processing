@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o"
+  "CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o"
   "liblibcmd_prcsg.pdb"
   "liblibcmd_prcsg.a"
 )

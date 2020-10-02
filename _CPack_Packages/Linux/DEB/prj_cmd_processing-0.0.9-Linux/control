@@ -1,9 +1,0 @@
-Package: prj_cmd_processing
-Version: 0.0.9
-Section: devel
-Priority: optional
-Architecture: amd64
-Installed-Size: 22
-Maintainer: cdandrey@gmail.com
-Description: prj_cmd_processing built using CMake
-

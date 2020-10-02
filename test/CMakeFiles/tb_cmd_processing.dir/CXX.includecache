@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+string
+-
+memory
+-
 
 /home/travis/build/cdandrey/otus_cmd_processing/test/tb_cmd_processing.cpp
 ../lib/cmd_processing.h

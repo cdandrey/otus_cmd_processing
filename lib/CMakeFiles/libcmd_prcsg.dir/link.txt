@@ -1,2 +1,2 @@
-/usr/bin/ar qc liblibcmd_prcsg.a  CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o
+/usr/bin/ar qc liblibcmd_prcsg.a  CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o
 /usr/bin/ranlib liblibcmd_prcsg.a

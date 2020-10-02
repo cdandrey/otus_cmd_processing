@@ -9,8 +9,18 @@
 /home/travis/build/cdandrey/otus_cmd_processing/src/main.cpp
 iostream
 -
+sstream
+-
 cmd_processing.h
 /home/travis/build/cdandrey/otus_cmd_processing/src/cmd_processing.h
+cmd_handler.h
+/home/travis/build/cdandrey/otus_cmd_processing/src/cmd_handler.h
+
+src/../lib/cmd_handler.h
 
 src/../lib/cmd_processing.h
+string
+-
+memory
+-
 

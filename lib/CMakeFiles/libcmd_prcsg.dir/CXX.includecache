@@ -6,11 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.cpp
+iostream
+-
+string
+-
+cmd_processing.h
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+cmd_handler.h
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.h
+
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.h
+
 /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.cpp
 iostream
 -
 cmd_processing.h
 /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+cmd_handler.h
+/home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.h
 
 /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.h
+string
+-
+memory
+-
 

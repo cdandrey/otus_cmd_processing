@@ -70,17 +70,32 @@ lib/CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.s"
 	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && /usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_processing.cpp -o CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.s
 
+lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o: lib/CMakeFiles/libcmd_prcsg.dir/flags.make
+lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o: lib/cmd_handler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/travis/build/cdandrey/otus_cmd_processing/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o"
+	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && /usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o -c /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.cpp
+
+lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.i"
+	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && /usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.cpp > CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.i
+
+lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.s"
+	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && /usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/travis/build/cdandrey/otus_cmd_processing/lib/cmd_handler.cpp -o CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.s
+
 # Object files for target libcmd_prcsg
 libcmd_prcsg_OBJECTS = \
-"CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o"
+"CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o" \
+"CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o"
 
 # External object files for target libcmd_prcsg
 libcmd_prcsg_EXTERNAL_OBJECTS =
 
 lib/liblibcmd_prcsg.a: lib/CMakeFiles/libcmd_prcsg.dir/cmd_processing.cpp.o
+lib/liblibcmd_prcsg.a: lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o
 lib/liblibcmd_prcsg.a: lib/CMakeFiles/libcmd_prcsg.dir/build.make
 lib/liblibcmd_prcsg.a: lib/CMakeFiles/libcmd_prcsg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/travis/build/cdandrey/otus_cmd_processing/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library liblibcmd_prcsg.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/travis/build/cdandrey/otus_cmd_processing/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library liblibcmd_prcsg.a"
 	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && $(CMAKE_COMMAND) -P CMakeFiles/libcmd_prcsg.dir/cmake_clean_target.cmake
 	cd /home/travis/build/cdandrey/otus_cmd_processing/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libcmd_prcsg.dir/link.txt --verbose=$(VERBOSE)
 

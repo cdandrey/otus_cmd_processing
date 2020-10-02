@@ -193,6 +193,33 @@ libcmd_prcsg/fast:
 	cd /home/travis/build/cdandrey/otus_cmd_processing && $(MAKE) -f lib/CMakeFiles/libcmd_prcsg.dir/build.make lib/CMakeFiles/libcmd_prcsg.dir/build
 .PHONY : libcmd_prcsg/fast
 
+cmd_handler.o: cmd_handler.cpp.o
+
+.PHONY : cmd_handler.o
+
+# target to build an object file
+cmd_handler.cpp.o:
+	cd /home/travis/build/cdandrey/otus_cmd_processing && $(MAKE) -f lib/CMakeFiles/libcmd_prcsg.dir/build.make lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.o
+.PHONY : cmd_handler.cpp.o
+
+cmd_handler.i: cmd_handler.cpp.i
+
+.PHONY : cmd_handler.i
+
+# target to preprocess a source file
+cmd_handler.cpp.i:
+	cd /home/travis/build/cdandrey/otus_cmd_processing && $(MAKE) -f lib/CMakeFiles/libcmd_prcsg.dir/build.make lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.i
+.PHONY : cmd_handler.cpp.i
+
+cmd_handler.s: cmd_handler.cpp.s
+
+.PHONY : cmd_handler.s
+
+# target to generate assembly for a file
+cmd_handler.cpp.s:
+	cd /home/travis/build/cdandrey/otus_cmd_processing && $(MAKE) -f lib/CMakeFiles/libcmd_prcsg.dir/build.make lib/CMakeFiles/libcmd_prcsg.dir/cmd_handler.cpp.s
+.PHONY : cmd_handler.cpp.s
+
 cmd_processing.o: cmd_processing.cpp.o
 
 .PHONY : cmd_processing.o
@@ -235,6 +262,9 @@ help:
 	@echo "... package"
 	@echo "... package_source"
 	@echo "... edit_cache"
+	@echo "... cmd_handler.o"
+	@echo "... cmd_handler.i"
+	@echo "... cmd_handler.s"
 	@echo "... cmd_processing.o"
 	@echo "... cmd_processing.i"
 	@echo "... cmd_processing.s"
