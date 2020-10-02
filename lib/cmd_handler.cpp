@@ -3,24 +3,32 @@
 
 #include "cmd_processing.h"
 #include "cmd_handler.h"
-#include "cmd_types.h"
 
-bool BulkBeginHandler::done(CmdProcessingPtr /*cmdProcessing*/)
+namespace detail 
+{
+const std::string CmdOpenBulk = "{";
+const std::string CmdCloseBulk = "}";
+}   // namespace detail
+
+namespace cmd 
+{
+
+bool BulkBeginHandler::done(CmdProcessing* /*cmdProcessing*/)
 {
     return false;
 }
 
-void BulkBeginHandler::read(CmdProcessingPtr cmdProcessing)
+void BulkBeginHandler::read(CmdProcessing* cmdProcessing)
 {
     auto [result,data] = cmdProcessing->read();
 
     if (!result) {
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkEndHandler{}));
-    } else if (data == commands::CmdOpenBulk) {
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkDynamicHandler{1}));
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkEndHandler{}});
+    } else if (data == detail::CmdOpenBulk) {
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkDynamicHandler{1}});
     } else {
         cmdProcessing->push(data);
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkStaticHandler{cmdProcessing->bulkSize()}));
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkStaticHandler{cmdProcessing->bulkSize() - 1}});
     }
 }
 
@@ -29,25 +37,25 @@ BulkDynamicHandler::BulkDynamicHandler(int countOpenBulk)
 {
 }
 
-bool BulkDynamicHandler::done(CmdProcessingPtr cmdProcessing)
+bool BulkDynamicHandler::done(CmdProcessing* cmdProcessing)
 {
     if (m_countOpenBulk == 0) {
-        cmdProcessing->pull();
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkBeginHandler{}));
+        cmdProcessing->output();
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkBeginHandler{}});
     }
 
     return false;
 }
 
-void BulkDynamicHandler::read(CmdProcessingPtr cmdProcessing)
+void BulkDynamicHandler::read(CmdProcessing* cmdProcessing)
 {
     auto [result,data] = cmdProcessing->read();
 
     if (!result) {
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkEndHandler{}));
-    } else if (data == commands::CmdOpenBulk){
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkEndHandler{}});
+    } else if (data == detail::CmdOpenBulk){
         ++m_countOpenBulk;
-    } else if (data == commands::CmdCloseBulk) {
+    } else if (data == detail::CmdCloseBulk) {
         --m_countOpenBulk;
     } else {
         cmdProcessing->push(data);
@@ -59,37 +67,39 @@ BulkStaticHandler::BulkStaticHandler(int bulkSize)
 {
 }
 
-bool BulkStaticHandler::done(CmdProcessingPtr cmdProcessing)
+bool BulkStaticHandler::done(CmdProcessing* cmdProcessing)
 {
     if (m_bulkSize == 0) {
-        cmdProcessing->pull();
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkBeginHandler{}));
+        cmdProcessing->output();
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkBeginHandler{}});
     }
 
     return false;
 }
 
-void BulkStaticHandler::read(CmdProcessingPtr cmdProcessing)
+void BulkStaticHandler::read(CmdProcessing* cmdProcessing)
 {
     auto [result,data] = cmdProcessing->read();
 
     if (!result) {
-        cmdProcessing->pull();
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkEndHandler{}));
-    } else if (data == commands::CmdOpenBulk) {
-        cmdProcessing->pull();
-        cmdProcessing->set_state(std::make_unique<ICmdHandler>(new BulkDynamicHandler{1}));
+        cmdProcessing->output();
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkEndHandler{}});
+    } else if (data == detail::CmdOpenBulk) {
+        cmdProcessing->output();
+        cmdProcessing->set_handler(ICmdHandlerPtr{new BulkDynamicHandler{1}});
     } else {
         cmdProcessing->push(data);
         --m_bulkSize;
     }
 }
 
-bool BulkEndHandler::done(CmdProcessingPtr /*cmdProcessing*/)
+bool BulkEndHandler::done(CmdProcessing* /*cmdProcessing*/)
 {
     return true;
 }
 
-void BulkEndHandler::read(CmdProcessingPtr /*cmdProcessing*/) 
+void BulkEndHandler::read(CmdProcessing* /*cmdProcessing*/) 
 {
 }
+
+} // namespace cmd

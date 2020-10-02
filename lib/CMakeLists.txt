@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 set(THIS libcmd_prcsg)
-set(HEADERS cmd_processing.h cmd_handler.h cmd_types.h)
+set(HEADERS cmd_processing.h cmd_handler.h)
 set(SOURCES cmd_processing.cpp cmd_handler.cpp)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})

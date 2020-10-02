@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
+
 #include "cmd_processing.h"
+#include "cmd_handler.h"
 
 int main(int argc, char* argv[])
 {
@@ -9,7 +11,7 @@ int main(int argc, char* argv[])
         std::stringstream convert(argv[1]);
         int bulkSize;
         if (convert >> bulkSize) {
-            CmdProcessing cmdProcessing{bulkSize};
+            cmd::CmdProcessing cmdProcessing{bulkSize};
             cmdProcessing.exec();
         } else {
             std::cout << "Error. Size bulk is not integer number." << std::endl;

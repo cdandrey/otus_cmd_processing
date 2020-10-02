@@ -1,7 +1,10 @@
 #include <iostream>
-#include <algorithm>
+
 #include "cmd_processing.h"
 #include "cmd_handler.h"
+
+namespace cmd
+{
 
 CmdProcessing::CmdProcessing(int bulkSize)
     : m_bulkSize(bulkSize)
@@ -10,17 +13,14 @@ CmdProcessing::CmdProcessing(int bulkSize)
 
 void CmdProcessing::exec()
 {
-    m_cmds = "bulk:";
-    m_handler = std::make_unique<BulkBeginHandler>();
+    m_handler = ICmdHandlerPtr{new BulkBeginHandler()};
 
-    auto thisPtr = std::make_shared<CmdProcessing>(this);
-
-    while (!m_handler->done(thisPtr)) {
-        m_handler->read(thisPtr);
+    while (!m_handler->done(this)) {
+        m_handler->read(this);
     }
 }
 
-void CmdProcessing::set_state(ICmdHandlerPtr handler)
+void CmdProcessing::set_handler(ICmdHandlerPtr handler)
 {
     m_handler = std::move(handler);
 }
@@ -32,12 +32,13 @@ void CmdProcessing::push(const std::string& cmd)
     m_cmds.append(",");
 }
 
-void CmdProcessing::pull()
+void CmdProcessing::output()
 {
-    m_cmds.pop_back();  // removed ','
-    std::cout << m_cmds << std::endl;
-
-    m_cmds = "bulk:";
+    if (!m_cmds.empty()) {
+        m_cmds.pop_back();  // removed ','
+        std::cout << "bulk:" << m_cmds << std::endl;
+        m_cmds.clear();
+    }
 }
 
 std::tuple<bool,std::string> CmdProcessing::read() const
@@ -53,4 +54,6 @@ std::tuple<bool,std::string> CmdProcessing::read() const
 int CmdProcessing::bulkSize() const
 {
     return m_bulkSize;
+}
+
 }
