@@ -6,6 +6,8 @@
 
 int main(int argc, char* argv[])
 {
+   std::cout << "Start... " << std::endl; 
+
     if (argc == 2) {
 
         std::stringstream convert(argv[1]);
