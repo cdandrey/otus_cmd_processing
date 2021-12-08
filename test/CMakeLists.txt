@@ -2,48 +2,54 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-set(THIS tb_cmd_processing)
-set(SOURCES tb_cmd_processing)
-
-set(LIBS libcmd_prcsg)
-
-if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
-    project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
-else()
-    project(${THIS} VERSION 0.0.1)
+if (MSVC)
+    if (${CMAKE_CXX_COMPILER_ARCHITECTURE_ID} STREQUAL "x64")
+        set(GTEST_ROOT $ENV{GTEST_LIBRARY_DIR})
+    else()
+        set(GTEST_ROOT $ENV{GTEST_LIBRARY86_DIR})
+    endif()
+    set(GTEST_INCLUDE_DIR $ENV{GTEST_INCLUDE_DIR})
 endif()
 
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 
-add_executable(${THIS} ${SOURCES})
+set(this tb_main)
+set(sources tb_main.cpp)
+set(LIBS libcmd_prcsg)
+
+add_executable(${this} ${sources})
 
 set_target_properties(
-    ${THIS}
+    ${this}
     PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 
 target_include_directories(
-    ${THIS}
+    ${this}
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../lib
+    ${GTEST_INCLUDE_DIR}
 )
 
-target_link_libraries(${THIS} ${GTEST_BOTH_LIBRARIES})
-target_link_libraries(${THIS} ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(${THIS} ${LIBS})
+target_link_libraries(${this} ${GTEST_BOTH_LIBRARIES})
+target_link_libraries(${this} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(${this} ${LIBS})
 
 if (MSVC)
     target_compile_options(
-        ${THIS}
+        ${this}
         PRIVATE
         /W4
+        $<$<CONFIG:Debug>:/MT>
+        $<$<CONFIG:Release>:/MT>
+
     )
 else ()
     target_compile_options(
-        ${THIS}
+        ${this}
         PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
@@ -51,4 +57,4 @@ endif()
 
 enable_testing()
 
-add_test(${THIS} ${THIS})
+add_test(${this} ${this})
