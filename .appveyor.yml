@@ -1,0 +1,44 @@
+image: 
+  - Visual Studio 2017
+  - Visual Studio 2019
+  - Ubuntu
+
+init:
+  - git config --global core.autocrlf input
+
+matrix:
+  fast_finish: false
+
+install:
+  - pwd
+  - set ORIGIN_PATH=%cd%
+  - git clone https://github.com/google/googletest.git
+  - cd googletest
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build . --config Release
+  - set GTEST_LIBRARY_DIR=%cd%\lib\Release
+  - set GTEST_LIBRARY86_DIR=%cd%\lib\Release
+  - set GTEST_INCLUDE_DIR=%ORIGIN_PATH%\googletest\googletest\include
+  - pwd
+  - cd ../../
+  - pwd
+
+build_script:
+  - cmake .
+  - cmake --build . --config Release
+
+test_script:
+  - .\test\Release\tb_main.exe
+
+artifacts:
+    - path: src\Release\cmd_processing.exe
+      name: portable
+
+deploy:
+    provider: GitHub
+    auth_token:
+        secure: zgoB68eyAR3DVSg0T3Tb3yq5/wzEaScu1qC/Mfiaeci9uXXorkdYcK6v7XLRjYL9
+    artifact: portable
+    force_update: true

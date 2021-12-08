@@ -3,9 +3,9 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-set(THIS libcmd_prcsg)
-set(HEADERS cmd_processing.h cmd_handler.h)
-set(SOURCES cmd_processing.cpp cmd_handler.cpp)
+set(THIS libcmd)
+set(HEADERS CommandProcessing.h AbstractCommandHandler.h)
+set(SOURCES CommandProcessing.cpp AbstractCommandHandler.cpp)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
     project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
