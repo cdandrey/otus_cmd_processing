@@ -1,42 +1,40 @@
 
-# src cmd_prcsg
-
 cmake_minimum_required(VERSION 3.2)
 
-set(THIS cmd_prcsg)
-set(SOURCES main.cpp)
-set(LIBS libcmd_prcsg)
+set(this cmd_processing)
+set(sources main.cpp)
+set(libs libcmd)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
-    project(${THIS} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+    project(${this} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-    project(${THIS} VERSION 0.0.1)
+    project(${this} VERSION 0.0.1)
 endif()
 
-add_executable(${THIS} ${SOURCES})
+add_executable(${this} ${sources})
 
 set_target_properties(
-        ${THIS}
+        ${this}
         PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
 )
 
 target_include_directories(
-        ${THIS}
+        ${this}
         PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/../lib
 )
 
 target_link_libraries(
-        ${THIS}
-        ${LIBS}
+        ${this}
+        ${libs}
 )
 
 if (MSVC)
 
     target_compile_options(
-        ${THIS}
+        ${this}
         PRIVATE
         /W4
     )
@@ -44,13 +42,13 @@ if (MSVC)
 else()
 
     target_compile_options(
-        ${THIS}
+        ${this}
         PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
 
 endif()
 
-install(TARGETS ${THIS} RUNTIME DESTINATION bin)
+install(TARGETS ${this} RUNTIME DESTINATION bin)
 
 
